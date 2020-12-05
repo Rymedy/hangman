@@ -1,8 +1,20 @@
 # Hangman made by Richard Webb in Python3 using Sublime Text (text editor)
 import sys,time,os,random
-from vairables import words_fruit
-from vairables import words_celebration
-from vairables import words_subject
+from variables import words_fruit, words_celebration, words_subject
+# Define global variables
+score = 0
+# Introduction to Hangman (Basic input and print commands)
+# Used a text art converter for this.
+print("██╗░░██╗░█████╗░███╗░░██╗░██████╗░███╗░░░███╗░█████╗░███╗░░██╗██╗".center(119, '░'))
+print("██║░░██║██╔══██╗████╗░██║██╔════╝░████╗░████║██╔══██╗████╗░██║██║".center(119, '░'))
+print("███████║███████║██╔██╗██║██║░░██╗░██╔████╔██║███████║██╔██╗██║██║".center(119, '░'))
+print("██╔══██║██╔══██║██║╚████║██║░░╚██╗██║╚██╔╝██║██╔══██║██║╚████║╚═╝".center(119, '░'))
+print("██║░░██║██║░░██║██║░╚███║╚██████╔╝██║░╚═╝░██║██║░░██║██║░╚███║██╗".center(119, '░'))
+print("╚═╝░░╚═╝╚═╝░░╚═╝╚═╝░░╚══╝░╚═════╝░╚═╝░░░░░╚═╝╚═╝░░╚═╝╚═╝░░╚══╝╚═╝".center(119, '░'))
+print("█▄▄░█▄█░░░█▀█░█░█▀▀░█░█░▄▀█░█▀█░█▀▄░░░█░█░█░█▀▀░█▄▄░█▄▄".center(119, '░'))
+print("█▄█░░█░░░░█▀▄░█░█▄▄░█▀█░█▀█░█▀▄░█▄▀░░░▀▄▀▄▀░██▄░█▄█░█▄█".center(119, '░'))
+username = input("Enter your username: ")
+print("Hello "+(username)+"!, Welcome to Hangman!")
 # Function that prints the hangman drawing
 def print_game(attempts, word):
 		if(attempts == 0):
@@ -65,139 +77,66 @@ def print_game(attempts, word):
 				for char in playagain_message:
 					sys.stdout.write(char)
 					sys.stdout.flush()
-					time.sleep(0.05)
+					time.sleep(0.03)
 				again = input("> ")
 				again = again.lower()
 				if again == "1":
 				  hangman()
 				return
-def scoresystem():
-	score = 0
-	score = score + 1
-	print ((str(username)) + "'s win score is now " + (str(score)) + "!")
 
-def hangman():
 
+
+
+
+
+def hangman(score):
 	if __name__ == '__main__':
-			# Introduction to Hangman (Basic input and print commands)
-			# Used a text art converter for this.
-			print("██╗░░██╗░█████╗░███╗░░██╗░██████╗░███╗░░░███╗░█████╗░███╗░░██╗██╗".center(119, '░'))
-			print("██║░░██║██╔══██╗████╗░██║██╔════╝░████╗░████║██╔══██╗████╗░██║██║".center(119, '░'))
-			print("███████║███████║██╔██╗██║██║░░██╗░██╔████╔██║███████║██╔██╗██║██║".center(119, '░'))
-			print("██╔══██║██╔══██║██║╚████║██║░░╚██╗██║╚██╔╝██║██╔══██║██║╚████║╚═╝".center(119, '░'))
-			print("██║░░██║██║░░██║██║░╚███║╚██████╔╝██║░╚═╝░██║██║░░██║██║░╚███║██╗".center(119, '░'))
-			print("╚═╝░░╚═╝╚═╝░░╚═╝╚═╝░░╚══╝░╚═════╝░╚═╝░░░░░╚═╝╚═╝░░╚═╝╚═╝░░╚══╝╚═╝".center(119, '░'))
-			print("█▄▄░█▄█░░░█▀█░█░█▀▀░█░█░▄▀█░█▀█░█▀▄░░░█░█░█░█▀▀░█▄▄░█▄▄".center(119, '░'))
-			print("█▄█░░█░░░░█▀▄░█░█▄▄░█▀█░█▀█░█▀▄░█▄▀░░░▀▄▀▄▀░██▄░█▄█░█▄█".center(119, '░'))
-			username = input("Enter your username: ")
-			print("Hello "+(username)+"!, Welcome to Hangman!")
-			theme_message = "Decide on a theme, enter 1 for fruit, 2 for celebrations and 3 for school subjects.\n"
+			theme_message = "Decide on a theme, enter \'Fruit\' (Easy), \'Subjects\' (Medium) or \'Celebrations\' (Hard).\n"
 			for char in theme_message:
 					sys.stdout.write(char)
 					sys.stdout.flush()
-					time.sleep(0.05)
-			word_theme = input("Select a theme: ")
-			if word_theme == "1":
+					time.sleep(0.03)
+			theme = input("Select a theme: ")
+			word_theme = theme.capitalize()
+			if word_theme == "Fruit":
 				word = random.choice(words_fruit)
-				print("░░░░░░░░░░░░░░░░░░░░░░▄█░░░░")
-				print("░░░░░░░░░░░░░░░░░░░░▄█░░█░░░")
-				print("░░░░░░░░░░░░░░░░░░░█░░██░█░░")
-				print("░░░░░░░░░░░░░░░░░▄█░░░░█░▄█░")
-				print("░░░░░░░░░░░░░░░▄█░░░░▄░░█░█░")
-				print("░░░░░░░░░░░░░░▄█░░░░░░░░▓█▄█")
-				print("░░░░░░░░░░░░▄█░░░░░░░░░░▄█░█")
-				print("░░░░░░░░░░░█░░░░░░░░░▓█░▄█░█")
-				print("░░░░░░░░░▄▓░░░░░░░░░░░░░▄█░█")
-				print("░░░░░░░▄█░░░░░░░░░░░░▓█░▄░▄█")
-				print("░░░░░░▄█░░░░░░░░░░░░░░░▄█░█░")
-				print("░░░░▄█░░░░░░░░░░░░░▄░░░█░▄█░")
-				print("░░░█░░░░░░░░░░░░░░░█░▄█░▄█░░")
-				print("░▄██░░░▓█░░▄█░░██░░░▄█░▄█░░░")
-				print("▒█░░█▓▄░░░░█░░░░░▄██░▄█░░░░░")
-				print("░░██▄░░██▓█▄▄██▓█░░▄█░░░░░░░")
-				print("░░░░░███▄▄░░░░▄▄█")
+				print("███████╗██████╗░██╗░░░██╗██╗████████╗░██████╗")
+				print("██╔════╝██╔══██╗██║░░░██║██║╚══██╔══╝██╔════╝")
+				print("█████╗░░██████╔╝██║░░░██║██║░░░██║░░░╚█████╗░")
+				print("██╔══╝░░██╔══██╗██║░░░██║██║░░░██║░░░░╚═══██╗")
+				print("██║░░░░░██║░░██║╚██████╔╝██║░░░██║░░░██████╔╝")
+				print("╚═╝░░░░░╚═╝░░╚═╝░╚═════╝░╚═╝░░░╚═╝░░░╚═════╝░")
 				fruit_message = '\nTheme \"Fruits\" has been selected"\n'
 				for char in fruit_message:
 					sys.stdout.write(char)
 					sys.stdout.flush()
-					time.sleep(0.05)
-			elif word_theme == "2":
+					time.sleep(0.03)
+			elif word_theme == "Celebrations":
 				word = random.choice(words_celebration)
-				print("                          (             )")
-				print("                  )      (*)           (*)      (")
-				print("         *       (*)      |             |      (*)")
-				print("                  |      |~|           |~|      |          *")
-				print("                 |~|     | |           | |     |~|")
-				print("                 | |     | |           | |     | |")
-				print("                ,| |a@@@@| |@@@@@@@@@@@| |@@@@a| |.")
-				print("           .,a@@@| |@@@@@| |@@@@@@@@@@@| |@@@@@| |@@@@a,.")
-				print("         ,a@@@@@@| |@@@@@@@@@@@@.@@@@@@@@@@@@@@| |@@@@@@@a,")
-				print("        a@@@@@@@@@@@@@@@@@@@@@' . `@@@@@@@@@@@@@@@@@@@@@@@@a")
-				print("        ;`@@@@@@@@@@@@@@@@@@'   .   `@@@@@@@@@@@@@@@@@@@@@';")
-				print("        ;@@@`@@@@@@@@@@@@@'     .     `@@@@@@@@@@@@@@@@'@@@;")
-				print("        ;@@@;,.aaaaaaaaaa       .       aaaaa,,aaaaaaa,;@@@;")
-				print("        ;;@;;;;@@@@@@@@;@      @.@      ;@@@;;;@@@@@@;;;;@@;")
-				print("        ;;;;;;;@@@@;@@;;@    @@ . @@    ;;@;;;;@@;@@@;;;;;;;")
-				print("        ;;;;;;;;@@;;;;;;;  @@   .   @@  ;;;;;;;;;;;@@;;;;@;;")
-				print("        ;;;;;;;;;;;;;;;;;@@     .     @@;;;;;;;;;;;;;;;;@@@;")
-				print("    ,%%%;;;;;;;;@;;;;;;;;       .       ;;;;;;;;;;;;;;;;@@;;%%%,")
-				print(" .%%%%%%;;;;;;;@@;;;;;;;;     ,%%%,     ;;;;;;;;;;;;;;;;;;;;%%%%%%,")
-				print(".%%%%%%%;;;;;;;@@;;;;;;;;   ,%%%%%%%,   ;;;;;;;;;;;;;;;;;;;;%%%%%%%,")
-				print("%%%%%%%%`;;;;;;;;;;;;;;;;  %%%%%%%%%%%  ;;;;;;;;;;;;;;;;;;;'%%%%%%%%")
-				print("%%%%%%%%%%%%`;;;;;;;;;;;;,%%%%%%%%%%%%%,;;;;;;;;;;;;;;;'%%%%%%%%%%%%")
-				print("`%%%%%%%%%%%%%%%%%,,,,,,,%%%%%%%%%%%%%%%,,,,,,,%%%%%%%%%%%%%%%%%%%%'")
-				print(" `%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%'")
-				print("  `%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%'")
-				print("             \"\"\"\"\"\"\"\"\"\"\"\"\"\"`,,,,,,,,,'\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"")
-				print("                            `%%%%%%%'")
-				print("                               %%%")
-				print("                              %%%%%")
-				print("                           .,%%%%%%%,.")
-				print("                      ,%%%%%%%%%%%%%%%%%%%")
+				print("░█████╗░███████╗██╗░░░░░███████╗██████╗░██████╗░░█████╗░████████╗██╗░█████╗░███╗░░██╗░██████╗")
+				print("██╔══██╗██╔════╝██║░░░░░██╔════╝██╔══██╗██╔══██╗██╔══██╗╚══██╔══╝██║██╔══██╗████╗░██║██╔════╝")
+				print("██║░░╚═╝█████╗░░██║░░░░░█████╗░░██████╦╝██████╔╝███████║░░░██║░░░██║██║░░██║██╔██╗██║╚█████╗░")
+				print("██║░░██╗██╔══╝░░██║░░░░░██╔══╝░░██╔══██╗██╔══██╗██╔══██║░░░██║░░░██║██║░░██║██║╚████║░╚═══██╗")
+				print("╚█████╔╝███████╗███████╗███████╗██████╦╝██║░░██║██║░░██║░░░██║░░░██║╚█████╔╝██║░╚███║██████╔╝")
+				print("░╚════╝░╚══════╝╚══════╝╚══════╝╚═════╝░╚═╝░░╚═╝╚═╝░░╚═╝░░░╚═╝░░░╚═╝░╚════╝░╚═╝░░╚══╝╚═════╝░")
 				celebration_message = '\nTheme \"Celebrations\" has been selected"\n'
 				for char in celebration_message:
 					sys.stdout.write(char)
 					sys.stdout.flush()
-					time.sleep(0.05)
-			elif word_theme == "3":
+					time.sleep(0.03)
+			elif word_theme == "Subjects":
 				word = random.choice(words_subject)
-				print("                                    ░░░░░░░░░░                                    ░░                          ")
-				print("            ░░░░                  ░░░░░░░░▒▒▒▒▒▒▒▒                              ░░░░                          ")
-				print("  ░░░░░░    ░░░░░░                ░░░░▒▒▒▒▒▒▒▒▒▒                              ░░░░░░                          ")
-				print("  ░░░░░░▒▒▒▒▒▒▒▒▒▒▒▒              ░░░░▒▒▒▒▒▒▒▒▒▒                            ░░░░░░░░                          ")
-				print("    ░░▒▒▒▒▒▒▒▒▒▒▒▒▒▒              ░░  ▒▒▒▒▒▒▒▒▒▒                          ░░░░░░░░░░        ░░░░░░░░          ")
-				print("          ▒▒▒▒▒▒▒▒▒▒▒▒          ░░░░░░▒▒▒▒▒▒▒▒▒▒          ░░░░░░░░      ░░░░░░░░▒▒░░░░░░    ▒▒▒▒▒▒▒▒          ")
-				print("          ▒▒▒▒▒▒▒▒▒▒▒▒░░        ░░░░▒▒▒▒▒▒▒▒▒▒▒▒      ░░░░░░▒▒▒▒▒▒▒▒  ░░░░░░▒▒▒▒░░░░▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒          ")
-				print("          ░░▒▒▒▒▒▒▒▒▒▒▒▒        ░░░░▒▒▒▒▒▒▒▒▒▒▒▒    ░░▒▒░░░░░░▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒░░        ▒▒▒▒▒▒▒▒          ")
-				print("          ░░▒▒  ▒▒▒▒▒▒▒▒▒▒      ░░░░▒▒▒▒▒▒▒▒▒▒▒▒░░░░░░    ░░▒▒▒▒▓▓▓▓▓▓░░░░▒▒▒▒▒▒▒▒          ▒▒▒▒▒▒▒▒          ")
-				print("          ░░▒▒    ▒▒▒▒▒▒▒▒░░  ░░░░░░░░▒▒▒▒▒▒▒▒▒▒▒▒      ▒▒▓▓▒▒▒▒████▓▓░░░░▒▒▒▒▒▒▒▒          ▒▒▒▒▒▒▒▒▒▒▒▒░░    ")
-				print("          ░░▒▒    ▒▒▒▒▒▒▒▒▒▒  ░░░░▒▒  ▒▒▒▒▒▒▒▒▒▒▓▓    ▒▒▒▒▒▒▒▒▒▒████▓▓░░░░▒▒▒▒▒▒▒▒          ▒▒▒▒▒▒▒▒▒▒▒▒▒▒    ")
-				print("          ░░▒▒      ▒▒▒▒▒▒▒▒▒▒░░░░▒▒  ▒▒▒▒▒▒▒▒▒▒▒▒  ░░▒▒████▒▒▒▒████▓▓░░░░▒▒▒▒▒▒▒▒          ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒  ")
-				print("          ░░▒▒      ▒▒▒▒▒▒▒▒▒▒░░░░▒▒    ▒▒▒▒▒▒▒▒▒▒░░▒▒▓▓████▒▒▒▒████▒▒░░░░▒▒▒▒▒▒▒▒          ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒  ")
-				print("          ░░▒▒        ▒▒▒▒▒▒▒▒▒▒░░▒▒  ░░▒▒▒▒▒▒▒▒▓▓▒▒▒▒▓▓██▓▓▒▒▒▒▓▓▓▓▓▓░░░░▒▒▒▒▒▒▒▒        ░░▒▒▒▒▒▒▒▒  ▓▓▒▒▒▒▒▒")
-				print("          ░░▒▒        ░░▒▒▒▒▒▒▒▒░░░░░░░░░░░░▒▒▒▒▓▓▒▒▒▒▒▒▓▓▒▒░░░░▓▓▓▓▓▓░░░░▒▒▒▒▒▒▒▒░░░░    ▒▒▒▒▒▒▒▒  ░░▓▓▒▒▒▒▒▒")
-				print("          ░░▒▒    ░░░░░░░░▒▒▒▒▒▒▒▒▒▒▒▒▒▒░░░░▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓▒▒▒▒░░▒▒▒▒▒▒▒▒░░░░░░▒▒▒▒▒▒▒▒░░▒▒▒▒▒▒▒▒▒▒▒▒")
-				print("            ▒▒░░░░░░░░░░▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒░░░░▒▒▒▒▒▒▒▒░░░░░░░░░░░░░░░░▒▒▒▒░░░░░░░░░░▒▒░░░░▒▒▒▒▒▒▒▒▓▓▓▓▒▒▒▒▒▒▒▒  ")
-				print("         ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓▓▓▒▒▒▒▒▒▒▒░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▒▒▒▒▒▒░░░░░░░░░░░░░░▒▒▒▒▒▒▒▒▓▓▓▓▒▒▒▒▒▒▒▒░░   ")
-				print("      ░░░░░░▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▒▒▒▒▒▒░░░░░░░░░░▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒")
-				print("      ░░░░  ░░░░░░▒▒▒▒░░░░░░░░░░░░░░░░░░░░░░░░  ░░  ░░    ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▒▒")
-				print("      ░░░░░░░░░░░░▒▒░░░░░░░░░░░░░░░░                              ░░░░░░░░░░░░░░░░░░░░░░░░  ░░░░░░░░░░░░░░    ")
-				print("      ░░░░░░░░░░░░░░  ░░░░░░░░                                                ░░                              ")
-				print("                                                                                    ░░                        ")
-				print("                              ░░                            ░░        ░░            ░░░░                      ")
-				print("                      ░░                                    ░░░░              ▒▒                              ")
-				print("                                    ░░                        ░░░░          ▓▓▒▒  ░░                          ")
-				print("                                    ░░  ░░                    ░░            ▒▒░░  ░░                          ")
-				print("                              ▒▒▒▒▒▒░░  ░░░░░░░░░░░░░░░░░░                          ░░▒▒▒▒▒▒    ░░▒▒▒▒        ")
-				print("              ░░▒▒▒▒▒▒░░      ░░░░          ░░░░░░░░░░░░    ░░    ▒▒▓▓░░      ░░        ░░░░                  ")
-				print("                ░░░░░░        ░░                              ░░▓▓▒▒░░░░░░  ▒▒▒▒          ░░░░                ")
-				print("                          ░░░░░░                                ░░░░    ░░  ▒▒              ░░░░▒▒▒▒░░        ")
-				print("                      ▒▒▒▒▒▒▒▒                                                              ░░░░░░░░░░        ")
+				print("░██████╗██╗░░░██╗██████╗░░░░░░██╗███████╗░█████╗░████████╗░██████╗")
+				print("██╔════╝██║░░░██║██╔══██╗░░░░░██║██╔════╝██╔══██╗╚══██╔══╝██╔════╝")
+				print("╚█████╗░██║░░░██║██████╦╝░░░░░██║█████╗░░██║░░╚═╝░░░██║░░░╚█████╗")
+				print("░╚═══██╗██║░░░██║██╔══██╗██╗░░██║██╔══╝░░██║░░██╗░░░██║░░░░╚═══██╗")
+				print("██████╔╝╚██████╔╝██████╦╝╚█████╔╝███████╗╚█████╔╝░░░██║░░░██████╔╝")
+				print("╚═════╝░░╚═════╝░╚═════╝░░╚════╝░╚══════╝░╚════╝░░░░╚═╝░░░╚═════╝░")
 				subject_message = '\nTheme \"School Subjects\" has been selected"\n'
 				for char in subject_message:
 					sys.stdout.write(char)
 					sys.stdout.flush()
-					time.sleep(0.05)
+					time.sleep(0.03)
 			attempts = 0
 			listWord = list(word)
 			blank = "_"*len(word)
@@ -252,21 +191,47 @@ def hangman():
 							print("░╚████╔╝░██║░░██║██║░░░██║░░╚██╗████╗██╔╝██║░░██║██╔██╗██║██║".center(119, '░'))
 							print("░░╚██╔╝░░██║░░██║██║░░░██║░░░████╔═████║░██║░░██║██║╚████║╚═╝".center(119, '░'))
 							print("░░░██║░░░╚█████╔╝╚██████╔╝░░░╚██╔╝░╚██╔╝░╚█████╔╝██║░╚███║██╗".center(119, '░'))
-							print("░░░╚═╝░░░░╚════╝░░╚═════╝░░░░░╚═╝░░░╚═╝░░░╚════╝░╚═╝░░╚══╝╚═╝".center(119, '░'))
-							
-							print("You won " + (username) + "!, the word was "+ (word) + "!")
+							print("░░░╚═╝░░░░╚════╝░░╚═════╝░░░░░╚═╝░░░╚═╝░░░╚════╝░╚═╝░░╚══╝╚═╝".center(119, '░'))	
+							blankline = "______________________________________________________________________________________________________________________"		
+							score = score + 1
+							print("You won " + (username) + "!, the word was "+ (word) + "!, Your score is currently " + (str(score)) + "!")
+							print("Log/Highscore Table")
+							print(blankline)
+							# Open the score.txt file and make (writable)
+							with open("score.txt", "a") as highscoreFile:
+							# Iterate over each line in the file
+								# write line to output file
+								highscoreFile.write("Username: " + (username))
+								highscoreFile.write("\n")
+								highscoreFile.write("Theme: " + (word_theme))
+								highscoreFile.write("\n")
+								highscoreFile.write("Highscore: " + (str(score)))
+								highscoreFile.write("\n")
+								highscoreFile.write(blankline)
+								highscoreFile.write("\n")
+								highscoreFile.close()
+							highscoreFile = open("score.txt", "r")
+							print(highscoreFile.read())
+							print("Would you like to reset/clear the current highscore table?")
+							resetHighscoreTable = input("Enter \'Reset\' to reset the table or nothing to continue: ")
+							resetTable = resetHighscoreTable.capitalize()
+							if resetTable == "Reset":
+								highscoreFile = open("score.txt", "r+")
+								highscoreFile.truncate(0)
+								highscoreFile.close()
+							else:
+								pass
 							print("\n")
 							print("Would you like to play again?")
+							print("NOTE: You may lose progress on your score!")
 							again = str(input("Enter 1 for yes or 2 for no: "))
 							if again == "1":
-								hangman()
+								hangman(score)
 							elif again == "2":
 								quit()
-							
+
 						else:
 							print("Great Job " + (username) + ", that was correct!")
 
 
-
-
-hangman()
+hangman(score)
