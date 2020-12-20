@@ -1,0 +1,189 @@
+{\rtf1\ansi\ansicpg1252\deff0\nouicompat\deflang2057{\fonttbl{\f0\fnil\fcharset0 Calibri;}{\f1\fnil\fcharset1 Segoe UI Symbol;}}
+{\*\generator Riched20 10.0.19041}\viewkind4\uc1 
+\pard\sa200\sl276\slmult1\qc\b\f0\fs40\lang9\par
+Documentation | Python3 - Hangman\b0\fs22\par
+
+\pard\sa200\sl276\slmult1\b Statement of Intent\par
+\b0 To develop a sophisticated program that allows the user to interact with a text-based hangman game developed in python3 and written in sublime text using programming knowledge using different variables, functions and methods in order to create a text-based hangman game.\par
+\b Gantt Chart\b0\par
+\par
+\b Algorithm\b0\par
+The program then first defines and encases everything but the print hangman function in a hangman function. The program imports the \ldblquote random\rdblquote  module to be used for randomly selecting a word from a list variable depending on the selected theme. The hangman program takes in user input which is then error checked by the program and checks if the user input is either larger than 1 letter or checks if the user has not input anything, otherwise it will add the user\rquote s input into a list variable as a string through the append function and checks if the user input has not already been guessed by checking if the letter is in the list variable. The blanks are shown through the use of a variable which is multiplied by the length of the word selected. Each blank or underscore is then put into a list variable. The print game function is now called which prints the hangman art depending on what value the attempts variable is currently on. The join function is then used to separate the blanks with a space, a while loop is then called whilst the attempts variable is less then 6 and allows the user to give user input. The user input is then turned into lower case using the lower function to match the given word to ensure capital letters do not affect the attempts variable and is not seen as incorrect. The program then uses a while loop to increment through the word to check if the given user input is the same as one of the letters in the word. The program checks to see if the current list of blanks is equal to the old amount of list blanks, if it is then the program will print incorrect guesses and increment the attempted value. If the amount of letters in the word is not equal to the amount of blanks, the amount of blanks will be made equal to the new amount of blanks variable. If the amount of letters in the word is equal to the amount of blanks, the program will print \ldblquote You won\rdblquote  and will increment the score variable that was defined at the beginning of the program. The program will print the score variable then open the score.txt file (highscore system) and write the user's username, word theme selected and score. The file will then be read and will prompt the user if they want to reset the high score table by using the truncate function. The user will then be prompted if they want to play again and will call the hangman function.\par
+\par
+\b Pseudocode\b0\par
+START\par
+SCORE = 0\par
+PRINT \ldblquote Hangman\rdblquote\par
+USERNAME = USER_INPUT\par
+PRINT Hello \ldblquote Username\rdblquote\par
+\par
+FUNCTION PRINT_GAME\par
+\tab\tab If ATTEMPTS = 0 THEN\par
+\tab\tab\tab PRINT "_____"\par
+\tab\tab\tab PRINT "\f1\u9553?\u9617?\u9617?\f0\\\f1\u9608?\f0\par
+\tab\tab\tab PRINT "   \f1\u9617?\u9617?\u9608?\f0\par
+\tab\tab\tab PRINT \ldblquote    \f1\u9617?\u9617?\u9608?\f0\par
+\tab\tab\tab PRINT \ldblquote    \f1\u9617?\u9617?\u9608?\f0\par
+\tab\tab\tab PRINT \ldblquote    \f1\u9617?\u9617?\u9608?\f0\par
+\tab\tab\tab PRINT \ldblquote\f1\u9552?\u9552?\u9552?\u9552?\u9552?\u9552?\u9552?\u9552?\f0\par
+\tab\tab ELSE IF ATTEMPTS = 1 THEN\par
+\tab\tab\tab PRINT "_____"\par
+\tab\tab\tab PRINT "\f1\u9553?\u9617?\u9617?\f0\\\f1\u9608?\f0\par
+\tab\tab\tab PRINT "O\f1\u9617?\u9617?\u9608?\f0\par
+\tab\tab\tab PRINT \ldblquote    \f1\u9617?\u9617?\u9608?\f0\par
+\tab\tab\tab PRINT \ldblquote    \f1\u9617?\u9617?\u9608?\f0\par
+\tab\tab\tab PRINT \ldblquote    \f1\u9617?\u9617?\u9608?\f0\par
+\tab\tab\tab PRINT \ldblquote\f1\u9552?\u9552?\u9552?\u9552?\u9552?\u9552?\u9552?\u9552?\f0\par
+\tab\tab ELSE IF ATTEMPTS = 2 THEN\par
+\tab\tab\tab PRINT "_____"\par
+\tab\tab\tab PRINT "\f1\u9553?\u9617?\u9617?\f0\\\f1\u9608?\f0\par
+\tab\tab\tab PRINT "O\f1\u9617?\u9617?\u9608?\f0\par
+\tab\tab\tab PRINT \ldblquote    \f1\u9617?\u9617?\u9608?\f0\par
+\tab\tab\tab PRINT \ldblquote    \f1\u9617?\u9617?\u9608?\f0\par
+\tab\tab\tab PRINT \ldblquote    \f1\u9617?\u9617?\u9608?\f0\par
+\tab\tab\tab PRINT \ldblquote\f1\u9552?\u9552?\u9552?\u9552?\u9552?\u9552?\u9552?\u9552?\f0\par
+\tab\tab ELSE IF ATTEMPTS = 3 THEN\par
+\tab\tab\tab PRINT "_____"\par
+\tab\tab\tab PRINT "\f1\u9553?\u9617?\u9617?\f0\\\f1\u9608?\f0\par
+\tab\tab\tab PRINT "O\f1\u9617?\u9617?\u9608?\f0\par
+\tab\tab\tab PRINT \ldblquote /| \f1\u9617?\u9617?\u9608?\f0\par
+\tab\tab\tab PRINT \ldblquote    \f1\u9617?\u9617?\u9608?\f0\par
+\tab\tab\tab PRINT \ldblquote    \f1\u9617?\u9617?\u9608?\f0\par
+\tab\tab\tab PRINT \ldblquote\f1\u9552?\u9552?\u9552?\u9552?\u9552?\u9552?\u9552?\u9552?\f0\par
+\tab\tab ELSE IF ATTEMPTS = 4 THEN\par
+\tab\tab\tab PRINT "_____"\par
+\tab\tab\tab PRINT "\f1\u9553?\u9617?\u9617?\f0\\\f1\u9608?\f0\par
+\tab\tab\tab PRINT "O\f1\u9617?\u9617?\u9608?\f0\par
+\tab\tab\tab PRINT \ldblquote /|\\ \f1\u9617?\f0  \f1\u9608?\f0\par
+\tab\tab\tab PRINT \ldblquote    \f1\u9617?\u9617?\u9608?\f0\par
+\tab\tab\tab PRINT \ldblquote    \f1\u9617?\u9617?\u9608?\f0\par
+\tab\tab\tab PRINT \ldblquote\f1\u9552?\u9552?\u9552?\u9552?\u9552?\u9552?\u9552?\u9552?\f0\par
+\tab\tab ELSE IF ATTEMPTS = 5 THEN\par
+\tab\tab\tab PRINT "_____"\par
+\tab\tab\tab PRINT "\f1\u9553?\u9617?\u9617?\f0\\\f1\u9608?\f0\par
+\tab\tab\tab PRINT "O\f1\u9617?\u9617?\u9608?\f0\par
+\tab\tab\tab PRINT \ldblquote /|\\ \f1\u9617?\f0  \f1\u9608?\f0\par
+\tab\tab\tab PRINT \ldblquote /  \f1\u9617?\u9617?\u9608?\f0\par
+\tab\tab\tab PRINT \ldblquote    \f1\u9617?\u9617?\u9608?\f0\par
+\tab\tab\tab PRINT \ldblquote\f1\u9552?\u9552?\u9552?\u9552?\u9552?\u9552?\u9552?\u9552?\f0\par
+\tab\tab ELSE IF ATTEMPTS = 6 THEN\par
+\tab\tab\tab PRINT "_____"\par
+\tab\tab\tab PRINT "\f1\u9553?\u9617?\u9617?\f0\\\f1\u9608?\f0\par
+\tab\tab\tab PRINT "O\f1\u9617?\u9617?\u9608?\f0\par
+\tab\tab\tab PRINT \ldblquote /|\\ \f1\u9617?\f0  \f1\u9608?\f0\par
+\tab\tab\tab PRINT \ldblquote / \\\f1\u9617?\u9617?\u9608?\f0\par
+\tab\tab\tab PRINT \ldblquote    \f1\u9617?\u9617?\u9608?\f0\par
+\tab\tab\tab PRINT \ldblquote\f1\u9552?\u9552?\u9552?\u9552?\u9552?\u9552?\u9552?\u9552?\f0\par
+\tab\tab\tab PRINT \ldblquote Game Over, would you like to play again?\rdblquote\tab\tab\tab\tab\tab AGAIN = USER_INPUT\par
+\tab\tab\tab IF AGAIN = "1" THEN\par
+\tab\tab\tab   CALL HANGMAN FUNCTION\par
+\tab\tab\tab RETURN\par
+\par
+FUNCTION HANGMAN THEN\par
+\tab\tab PRINT "Decide on a theme, enter Fruit, Subjects or Celebrations.\par
+\tab\tab THEME = USER_INPUT\par
+\tab\tab IF WORD_THEME = "Fruit" THEN\par
+\tab\tab WORD = RANDOM WORDS_FRUIT\par
+\tab\tab PRINT \ldblquote Fruits has been selected\rdblquote\par
+\tab\tab\tab ELSE IF WORDS_THEME = "Celebrations" THEN\par
+\tab\tab\tab\tab WORD = RANDOM WORDS_CELEBRATION\par
+\tab\tab\tab\tab PRINT \ldblquote Celebrations have been selected.\rdblquote\par
+\tab\tab\tab\tab elif word_theme == "Subjects":\par
+\tab\tab\tab\tab         word = random.choice(words_subject)\par
+\tab\tab\tab\tab         PRINT \ldblquote School Subjects has been selected\rdblquote\par
+\tab\tab\tab ATTEMPTS = 0\par
+\tab\tab\tab LIST_WORD = LIST WORD\par
+\tab\tab\tab BLANK = "_" * LETTERS IN WORD\par
+\tab\tab\tab LIST_BLANK = LIST BLANK\par
+\tab\tab\tab NEW_LISTBLANK = LIST BLANK\par
+\tab\tab\tab ATTEMPT_LIST = []\par
+\tab\tab\tab CALL PRINT_GAME FUNCTION\par
+\tab\tab\tab WHILE ATTEMPTS < 6 THEN\par
+\tab\tab\tab\tab ATTEMPT = USER_INPUT\par
+\tab\tab\tab\tab IF LETTERS IN ATTEMPT > 1 THEN\par
+\tab\tab\tab\tab\tab PRINT "Invalid guess. Enter at least 1 letter"\par
+\tab\tab\tab\tab ELSE IF ATTEMPT = "" THEN\par
+\tab\tab\tab\tab\tab PRINT "Please enter a guess."\par
+\tab\tab\tab\tab ELSE IF ATTEMPT IN ATTEMPT_LIST THEN\par
+\tab\tab\tab\tab\tab PRINT "Invalid Guess\rdblquote\par
+\tab\tab\tab\tab OTHERWISE THEN\par
+\tab\tab\tab\tab\tab ATTEMPT_LIST + ATTEMPT\par
+\tab\tab\tab\tab\tab i = 0\par
+\tab\tab\tab\tab\tab WHILE i < LETTERS IN WORD THEN\par
+\tab\tab\tab\tab\tab\tab IF ATTEMPT = WORD INCREMENT THEN\par
+\tab\tab\tab\tab\tab\tab\tab NEW_LISTBLANK INCREMENT = LISTWORD INCREMENT\par
+\tab\tab\tab\tab\tab\tab i = i + 1\par
+\par
+\tab\tab\tab\tab\tab if NEW_LISTBLANK = LISTBLANK THEN\par
+\tab\tab\tab\tab\tab\tab PRINT "Incorrect Guess, try again."\par
+\tab\tab\tab\tab\tab\tab ATTEMPTS = ATTEMPTS + 1\par
+\tab\tab\tab\tab\tab\tab CALL PRINT_GAME FUNCTION\par
+\par
+\tab\tab\tab\tab\tab\tab IF ATTEMPTS < 6 THEN\par
+\tab\tab\tab\tab\tab\tab\tab PRINT "Guess again."\par
+\par
+\tab\tab\tab\tab\tab ELSE IF LISTWORD != LISTBLANK THEN\par
+\par
+\tab\tab\tab\tab\tab\tab LISTBLANK = NEW_LISTBLANK\par
+\par
+\tab\tab\tab\tab\tab\tab if LISTWORD = LISTBLANK THEN\par
+\tab\tab\tab\tab\tab\tab\tab SCORE = SCORE + 1\par
+\tab\tab\tab\tab\tab\tab\tab PRINT "You won!\rdblquote\tab\tab\tab\tab\tab\tab\tab                         PRINT "Log/Highscore Table"\par
+\tab\tab\tab\tab\tab\tab\tab OPEN \ldblquote score.txt" \par
+\tab\tab\tab\tab\tab\tab\tab PRINT "Play again? Yes?")\par
+\tab\tab\tab\tab\tab\tab\tab AGAIN = USER_INPUT\tab\tab\tab\tab\tab\tab\tab             IF AGAIN = "1" THEN\par
+\tab\tab\tab\tab\tab\tab\tab\tab CALL HANGMAN FUNC\par
+\tab\tab\tab\tab\tab\tab\tab ELSE IF AGAIN == "2: THEN\par
+\tab\tab\tab\tab\tab\tab\tab\tab QUIT FUNCTION\par
+\par
+\tab\tab\tab\tab\tab\tab OTHERWISE THEN\par
+\tab\tab\tab\tab\tab\tab\tab PRINT "Great Job!\rdblquote\par
+CALL HANGMAN FUNCTION\par
+END\par
+\b Data structure/type\b0\par
+\i String Variables\par
+Integer Variables\par
+List Variables\par
+\i0\par
+\b String Variables\b0\par
+I used string variables to store different text such as the username that was input from the user or the blank variable which was used to store the \ldblquote _\rdblquote\rquote /blanks.\par
+\par
+\b Integer Variables\b0\par
+I used integer variables to store the score variable and the amount of letters or amount of blanks in different variables or for the attempts variable to check how many times the user has guessed.\par
+\par
+\b List Variables\b0\par
+I used list variables for both encasing the words in different themed variables as well as using list variables for appending the users input to check if the letter had already been guessed.\par
+\b Logbook\b0\par
+19/11/2020 | 9:42am\par
+Received assessment task.\par
+Basic startup, downloading python3, sublime text.\par
+Worked on basic user input (asking user to enter username) and storing user input info via variable (\ldblquote username\rdblquote ).\par
+\par
+20/11/2020 | 2:51pm\par
+Started defining functions such as \ldblquote hangman()\rdblquote  and specifically \ldblquote print_game()\rdblquote  function to print hangman text art.\par
+\par
+20/11/2020 | 10:17pm\par
+Started and finished working on basic functionality such as replacing blank spaces with letters from the word using the len() function.\par
+\par
+21/11/2020 | 8:48pm\par
+Made basic error testing such as testing if the letter had already been guessed through adding user input to a list variable. \par
+Also implemented error testing to detect if user input is valid or not.\par
+\par
+23/11/2020 | 5:42pm\par
+Started and finished work on theme selection and difficulty.\par
+\par
+29/11/2020 | 2:12pm\par
+Started and finished score functionality and started working on highscore and saving high score in a separate txt file.\par
+\par
+\par
+\b Test data\b0\par
+In order to test my program I used just three words for each theme and tried them all with 3 attempts to correctly make sure each theme is working. \ldblquote apple\rdblquote , \ldblquote fruit\rdblquote , \ldblquote birthday\rdblquote  and commented the \lquote random\rquote  function out in order to quickly test my program. For the username I entered my name \ldblquote Richard\rdblquote  to show if the username was displaying as proper. I also then entered all the letters in each word, eg. for apple \ldblquote a\rdblquote , \ldblquote p\rdblquote , \ldblquote l\rdblquote , \ldblquote e\rdblquote . When prompted if I wanted to reset the table I had entered \ldblquote Reset\rdblquote  and when prompted to play again played again another two times in order to test the two other themes and then entered to quit on the third run of the program. Everything had worked successfully with no errors.\par
+\par
+\par
+\b Evaluation\b0\par
+Therefore I have successfully created a hangman text-based game using python which has greatened my knowledge of programming language python as well as similarities to other programming languages.\par
+\par
+\par
+\par
+}
+ 
